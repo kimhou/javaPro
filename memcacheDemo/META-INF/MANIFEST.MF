@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: lib/spymemcached-2.8.4.jar
+Main-Class: SpyMemcachedManager
+
