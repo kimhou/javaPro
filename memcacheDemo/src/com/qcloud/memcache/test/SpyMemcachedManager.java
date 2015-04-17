@@ -16,9 +16,9 @@ import java.util.concurrent.ExecutionException;
 public class SpyMemcachedManager {
 
     public static void main(String[] args){
-        System.out.println("helloa");
+        System.out.println("start - " + ((args.length > 0 && !args[0].isEmpty()) ? args[0] : "none args"));
         SpyMemcachedManager manager = new SpyMemcachedManager();
-        if(args.length > 0 && args[0] == "ali") {
+        if(args.length > 0 && args[0].equals("ali")) {
             manager.testAli();
         }else{
             manager.testQcloud();
@@ -26,6 +26,7 @@ public class SpyMemcachedManager {
     }
 
     public void testQcloud(){
+        System.out.println("start test qcloud");
         final String host = "10.66.108.24";
         final String port = "11211";
 
@@ -68,6 +69,7 @@ public class SpyMemcachedManager {
     }
 
     public void testAli(){
+        System.out.println("start test aliyun");
         final String host = "834103b87c6111e4.m.cnqdalicm9pub001.ocs.aliyuncs.com";
         final String port = "11211";
         final String uname = "834103b87c6111e4";
