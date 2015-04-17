@@ -1,14 +1,12 @@
 package com.qcloud.memcache.test;
-import net.spy.memcached.AddrUtil;
-import net.spy.memcached.ConnectionFactory;
-import net.spy.memcached.ConnectionFactoryBuilder;
-import net.spy.memcached.MemcachedClient;
+import net.spy.memcached.*;
 import net.spy.memcached.auth.AuthDescriptor;
 import net.spy.memcached.auth.PlainCallbackHandler;
 import net.spy.memcached.internal.OperationFuture;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -19,6 +17,57 @@ public class SpyMemcachedManager {
 
     public static void main(String[] args){
         System.out.println("helloa");
+        SpyMemcachedManager manager = new SpyMemcachedManager();
+        if(args.length > 0 && args[0] == "ali") {
+            manager.testAli();
+        }else{
+            manager.testQcloud();
+        }
+    }
+
+    public void testQcloud(){
+        final String host = "10.66.108.24";
+        final String port = "11211";
+
+        MemcachedClient cache = null;
+        try {
+
+            cache = new MemcachedClient(new BinaryConnectionFactory(), AddrUtil.getAddresses(host + ":" + port));
+
+            System.out.println("OCS Sample Code");
+
+            //向OCS中存一个key为"ocs"的数据，便于后面验证读取数据
+            OperationFuture future = cache.set("ocs", 1000, " Open Cache Service,  from www.qcloud.com");
+
+            //向OCS中存若干个数据，随后可以在OCS控制台监控上看到统计信息
+            for (int i = 0; i < 10; i++) {
+                String key = "key-" + i;
+                String value = "value-" + i + "-" + new Date();
+
+                //执行set操作，向缓存中存数据
+                cache.set(key, 1000, value);
+            }
+
+            System.out.println("Set操作完成!");
+
+            future.get(); //  确保之前(mc.set())操作已经结束
+
+            //执行get操作，从缓存中读数据,读取key为"ocs"的数据
+            System.out.println("Get操作:" + cache.get("ocs"));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        if (cache != null) {
+            cache.shutdown();
+        }
+    }
+
+    public void testAli(){
         final String host = "834103b87c6111e4.m.cnqdalicm9pub001.ocs.aliyuncs.com";
         final String port = "11211";
         final String uname = "834103b87c6111e4";
@@ -39,7 +88,7 @@ public class SpyMemcachedManager {
             //向OCS中存若干个数据，随后可以在OCS控制台监控上看到统计信息
             for(int i=0;i<10;i++){
                 String key="key-"+i;
-                String value="value-"+i;
+                String value="value-"+i + "-" + new Date();
 
                 //执行set操作，向缓存中存数据
                 memcachedClient.set(key, 1000, value);
@@ -64,5 +113,4 @@ public class SpyMemcachedManager {
             memcachedClient.shutdown();
         }
     }
-
 }
