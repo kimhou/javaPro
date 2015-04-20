@@ -39,16 +39,15 @@ public class MemcachedTest {
             e.printStackTrace();
         }
         if (memcachedClient != null) {
-            memcachedClient.di;
+            memcachedClient = null;
         }
     }
 
-    public void testAli(){
+    public void testAli(String pwd){
         System.out.println("start test aliyun");
         final String host = "834103b87c6111e4.m.cnqdalicm9pub001.ocs.aliyuncs.com";
         final String port = "11211";
         final String uname = "834103b87c6111e4";
-        final String pwd = "hkmYXL123";
     }
 }
 
