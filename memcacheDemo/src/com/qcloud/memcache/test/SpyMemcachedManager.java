@@ -28,7 +28,7 @@ public class SpyMemcachedManager {
     public void testQcloud(){
         System.out.println("start test qcloud");
         final String host = "10.66.108.24";
-        final String port = "11211";
+        final String port = "9101";
 
         MemcachedClient cache = null;
         try {
