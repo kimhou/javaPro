@@ -66,7 +66,7 @@ public class SpyMemcachedManager {
             try {
                 System.out.println("Async Get操作:key-2=" + f.get(3, TimeUnit.SECONDS).toString());
             }catch (Exception e){
-                e.printStackTrace();;
+                e.printStackTrace();
             }
         } catch (IOException e) {
             e.printStackTrace();
