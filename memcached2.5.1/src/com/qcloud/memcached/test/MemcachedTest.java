@@ -1,22 +1,27 @@
 package com.qcloud.memcached.test;
 
 import com.danga.MemCached.MemCachedClient;
+import com.danga.MemCached.SockIOPool;
 
-import java.io.IOException;
-import java.lang.management.OperatingSystemMXBean;
 import java.util.Date;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by tencent on 15/4/20.
  */
 public class MemcachedTest {
     public static void main(String[] args){
-
+        System.out.println("start - " + ((args.length > 0 && !args[0].isEmpty()) ? args[0] : "none args"));
+        MemcachedTest test = new MemcachedTest();
+        if(args.length > 0 && args[0].equals("ali")) {
+            test.testAli(args.length > 1 ? args[1] : null);
+        }else{
+            test.testQcloud();
+        }
     }
     public void testQcloud() {
         final String host = "10.66.108.24";
         final String port = "9101";
+        String[] address = {host + ":" + port};
 
         System.out.println("start test qcloud - " + host + ":" + port);
 
@@ -24,6 +29,10 @@ public class MemcachedTest {
 
         try{
             memcachedClient = new MemCachedClient(host + ":" + port);
+
+            SockIOPool pool = SockIOPool.getInstance();
+            pool.setServers(address);
+            pool.initialize();
 
             String key = "key-1";
             String value = "value-1" + "-" + new Date();

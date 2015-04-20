@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="memcached2.5.1:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/memcached2_5_1_jar</output-path>
+    <root id="archive" name="memcached2.5.1.jar">
+      <element id="module-output" name="memcached2.5.1" />
+      <element id="file-copy" path="$PROJECT_DIR$/out/production/memcached2.5.1/com/qcloud/memcached/test/MemcachedTest.class" />
+    </root>
+  </artifact>
+</component>
