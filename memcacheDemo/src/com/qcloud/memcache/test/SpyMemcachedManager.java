@@ -60,6 +60,7 @@ public class SpyMemcachedManager {
             System.out.println("Get操作:" + cache.get("ocs"));
             System.out.println("Get操作:key-1=" + cache.get("key-1"));
 
+            System.out.println("Async Get操作:key-2=" + cache.asyncGet("key-2"));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

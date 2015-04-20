@@ -33,15 +33,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MemCachedClient.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MemCachedClient.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/danga/MemCached/MemCachedClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="5206" max-vertical-offset="23040">
-              <caret line="319" column="11" selection-start-line="319" selection-start-column="11" selection-end-line="319" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.62371886" vertical-offset="22326" max-vertical-offset="23112">
+              <caret line="1393" column="0" selection-start-line="1393" selection-start-column="0" selection-end-line="1393" selection-end-column="0" />
               <folding>
                 <element signature="e#0#41220#0" expanded="true" />
                 <element signature="e#9485#9486#0" expanded="true" />
                 <element signature="e#9505#9506#0" expanded="true" />
+                <element signature="e#9591#9592#0" expanded="true" />
+                <element signature="e#9621#9622#0" expanded="true" />
                 <element signature="e#9842#9843#0" expanded="true" />
                 <element signature="e#9881#9882#0" expanded="true" />
                 <element signature="e#10077#10078#0" expanded="true" />
@@ -52,16 +54,18 @@
                 <element signature="e#10765#10766#0" expanded="true" />
                 <element signature="e#18502#18503#0" expanded="true" />
                 <element signature="e#18538#18539#0" expanded="true" />
+                <element signature="e#40779#40780#0" expanded="true" />
+                <element signature="e#40826#40827#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MemcachedTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MemcachedTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/qcloud/memcached/test/MemcachedTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.81551975" vertical-offset="289" max-vertical-offset="1386">
-              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="307" max-vertical-offset="1386">
+              <caret line="46" column="45" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -452,12 +456,12 @@
       <changelist id="d3d19a1b-9e73-472a-a293-8cbd5e06fcd1" name="Default" comment="" />
       <created>1429496533764</created>
       <updated>1429496533764</updated>
-      <workItem from="1429496535593" duration="5852000" />
+      <workItem from="1429496535593" duration="6534000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5852000" />
+    <option name="totallyTimeSpent" value="6534000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1053" extended-state="0" />
@@ -482,7 +486,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973376" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973376" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -523,14 +527,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/qcloud/memcached/test/MemcachedTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="307" max-vertical-offset="1386">
+          <caret line="46" column="45" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/danga/MemCached/MemCachedClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5206" max-vertical-offset="23040">
-          <caret line="319" column="11" selection-start-line="319" selection-start-column="11" selection-end-line="319" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.62371886" vertical-offset="22326" max-vertical-offset="23112">
+          <caret line="1393" column="0" selection-start-line="1393" selection-start-column="0" selection-end-line="1393" selection-end-column="0" />
           <folding>
             <element signature="e#0#41220#0" expanded="true" />
             <element signature="e#9485#9486#0" expanded="true" />
             <element signature="e#9505#9506#0" expanded="true" />
+            <element signature="e#9591#9592#0" expanded="true" />
+            <element signature="e#9621#9622#0" expanded="true" />
             <element signature="e#9842#9843#0" expanded="true" />
             <element signature="e#9881#9882#0" expanded="true" />
             <element signature="e#10077#10078#0" expanded="true" />
@@ -541,16 +557,8 @@
             <element signature="e#10765#10766#0" expanded="true" />
             <element signature="e#18502#18503#0" expanded="true" />
             <element signature="e#18538#18539#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/qcloud/memcached/test/MemcachedTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.81551975" vertical-offset="289" max-vertical-offset="1386">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#40779#40780#0" expanded="true" />
+            <element signature="e#40826#40827#0" expanded="true" />
           </folding>
         </state>
       </provider>
