@@ -9,6 +9,8 @@ import java.net.InetSocketAddress;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by tencent on 15/4/16.
@@ -37,7 +39,7 @@ public class SpyMemcachedManager {
 
             System.out.println("OCS Sample Code");
             //执行get操作，从缓存中读数据,读取key为"ocs"的数据
-            System.out.println("Get操作:key-1=" + cache.get("key-1"));
+            System.out.println("Get操作:last key-1=" + cache.get("key-1"));
 
 
             //向OCS中存一个key为"ocs"的数据，便于后面验证读取数据
@@ -58,9 +60,14 @@ public class SpyMemcachedManager {
 
             //执行get操作，从缓存中读数据,读取key为"ocs"的数据
             System.out.println("Get操作:" + cache.get("ocs"));
-            System.out.println("Get操作:key-1=" + cache.get("key-1"));
+            System.out.println("Get操作:just set key-1=" + cache.get("key-1"));
 
-            System.out.println("Async Get操作:key-2=" + cache.asyncGet("key-2"));
+            Future f =  cache.asyncGet("key-2");
+            try {
+                System.out.println("Async Get操作:key-2=" + f.get(3, TimeUnit.SECONDS).toString());
+            }catch (Exception e){
+                e.printStackTrace();;
+            }
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
