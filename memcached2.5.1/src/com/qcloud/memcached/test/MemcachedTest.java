@@ -28,14 +28,23 @@ public class MemcachedTest {
         MemCachedClient memcachedClient = null;
 
         try{
-            memcachedClient = new MemCachedClient(host + ":" + port);
 
             SockIOPool pool = SockIOPool.getInstance();
             pool.setServers(address);
+            pool.setFailover(true);
+            pool.setInitConn(10);
+            pool.setMinConn(5);
+            pool.setMaxConn(250);
+            pool.setMaintSleep(30);
+            pool.setNagle(false);
+            pool.setSocketTO(3000);
+            pool.setAliveCheck(true);
             pool.initialize();
 
             String key = "key-1";
             String value = "value-1" + "-" + new Date();
+
+            memcachedClient = new MemCachedClient();
 
             System.out.println("get last key-1 isExist = " + memcachedClient.keyExists(key));
             System.out.println("get last key-1 = " + memcachedClient.get(key));
