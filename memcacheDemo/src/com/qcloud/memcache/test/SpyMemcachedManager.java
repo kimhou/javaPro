@@ -19,7 +19,7 @@ public class SpyMemcachedManager {
         System.out.println("start - " + ((args.length > 0 && !args[0].isEmpty()) ? args[0] : "none args"));
         SpyMemcachedManager manager = new SpyMemcachedManager();
         if(args.length > 0 && args[0].equals("ali")) {
-            manager.testAli();
+            manager.testAli(args.length > 1 ? args[1] : null);
         }else{
             manager.testQcloud();
         }
@@ -72,12 +72,16 @@ public class SpyMemcachedManager {
         }
     }
 
-    public void testAli(){
+    public void testAli(String pwd){
         System.out.println("start test aliyun");
         final String host = "834103b87c6111e4.m.cnqdalicm9pub001.ocs.aliyuncs.com";
         final String port = "11211";
         final String uname = "834103b87c6111e4";
-        final String pwd = "hkmYXL123";
+
+        if(pwd.isEmpty()){
+            System.out.println("pwd is null");
+            return;
+        }
 
         MemcachedClient memcachedClient = null;
         try {

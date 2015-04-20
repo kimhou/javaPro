@@ -36,9 +36,10 @@
       <file leaf-file-name="MemCachedClient.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/danga/MemCached/MemCachedClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="23040">
-              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="5206" max-vertical-offset="23040">
+              <caret line="319" column="11" selection-start-line="319" selection-start-column="11" selection-end-line="319" selection-end-column="11" />
               <folding>
+                <element signature="e#0#41220#0" expanded="true" />
                 <element signature="e#9485#9486#0" expanded="true" />
                 <element signature="e#9505#9506#0" expanded="true" />
                 <element signature="e#9842#9843#0" expanded="true" />
@@ -59,8 +60,8 @@
       <file leaf-file-name="MemcachedTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/qcloud/memcached/test/MemcachedTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.446527" vertical-offset="9" max-vertical-offset="918">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.13891952" vertical-offset="126" max-vertical-offset="1080">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -432,12 +433,12 @@
       <changelist id="d3d19a1b-9e73-472a-a293-8cbd5e06fcd1" name="Default" comment="" />
       <created>1429496533764</created>
       <updated>1429496533764</updated>
-      <workItem from="1429496535593" duration="2102000" />
+      <workItem from="1429496535593" duration="4183000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2102000" />
+    <option name="totallyTimeSpent" value="4183000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1053" extended-state="0" />
@@ -500,9 +501,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/danga/MemCached/MemCachedClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="23040">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5206" max-vertical-offset="23040">
+          <caret line="319" column="11" selection-start-line="319" selection-start-column="11" selection-end-line="319" selection-end-column="11" />
           <folding>
+            <element signature="e#0#41220#0" expanded="true" />
             <element signature="e#9485#9486#0" expanded="true" />
             <element signature="e#9505#9506#0" expanded="true" />
             <element signature="e#9842#9843#0" expanded="true" />
@@ -521,8 +523,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/qcloud/memcached/test/MemcachedTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.446527" vertical-offset="9" max-vertical-offset="918">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.13891952" vertical-offset="126" max-vertical-offset="1080">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -4,6 +4,7 @@ import com.danga.MemCached.MemCachedClient;
 
 import java.io.IOException;
 import java.lang.management.OperatingSystemMXBean;
+import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -14,23 +15,31 @@ public class MemcachedTest {
 
     }
     public void testQcloud() {
-        System.out.println("start test qcloud");
         final String host = "10.66.108.24";
-        final String port = "11211";
+        final String port = "9101";
+
+        System.out.println("start test qcloud - " + host + ":" + port);
+
         MemCachedClient memcachedClient = null;
 
         try{
             memcachedClient = new MemCachedClient(host + ":" + port);
 
-        }catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+            String key = "key-1";
+            String value = "value-1" + "-" + new Date();
+
+            System.out.println("get last key-1 isExist = " + memcachedClient.keyExists(key));
+            System.out.println("get last key-1 = " + memcachedClient.get(key));
+
+            memcachedClient.set(key, value);
+
+            System.out.println("get just set key-1 = " + memcachedClient.get(key));
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
         if (memcachedClient != null) {
-            memcachedClient.shutdown();
+            memcachedClient.di;
         }
     }
 
