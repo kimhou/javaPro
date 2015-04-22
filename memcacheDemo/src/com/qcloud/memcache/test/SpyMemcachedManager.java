@@ -38,8 +38,6 @@ public class SpyMemcachedManager {
             cache = new MemcachedClient(new BinaryConnectionFactory(), AddrUtil.getAddresses(host + ":" + port));
 
             System.out.println("OCS Sample Code");
-            //执行get操作，从缓存中读数据,读取key为"ocs"的数据
-            System.out.println("Get操作:last key-1=" + cache.get("key-1"));
 
             //向OCS中存一个key为"ocs"的数据，便于后面验证读取数据
             OperationFuture future = cache.set("ocs", 1000, " Open Cache Service,  from www.qcloud.com");
