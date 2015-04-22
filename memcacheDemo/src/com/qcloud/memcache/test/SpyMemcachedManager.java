@@ -68,6 +68,11 @@ public class SpyMemcachedManager {
         }
     }
 
+    /**
+     * 测试正常情况
+     * @param cache
+     * @param count
+     */
     public void testNormal(MemcachedClient cache, int count){
         System.out.println("-----------------start test normal----------------");
         for (int i = 0; i < count; i++) {
@@ -86,6 +91,11 @@ public class SpyMemcachedManager {
         }
     }
 
+    /**
+     * 测试并发set同一key
+     * @param cache
+     * @param count
+     */
     public void testAsync(MemcachedClient cache, int count){
         System.out.println("-----------------start test async set----------------");
         for(int i = 0; i < count; i++){
@@ -102,6 +112,11 @@ public class SpyMemcachedManager {
         }
     }
 
+    /**
+     * 测试并发asyncGet接口
+     * @param cache
+     * @param count
+     */
     public void testAsyncGet(MemcachedClient cache, int count){
         System.out.println("-----------------start test async get----------------");
 
