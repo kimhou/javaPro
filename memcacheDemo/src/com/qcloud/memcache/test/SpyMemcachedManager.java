@@ -18,16 +18,19 @@ import java.util.concurrent.TimeUnit;
 public class SpyMemcachedManager {
 
     public static void main(String[] args){
-        System.out.println("start - " + ((args.length > 0 && !args[0].isEmpty()) ? args[0] : "none args"));
+        String testTarget = (args.length > 0 && !args[0].isEmpty()) ? args[0] : null;
+        String testMethod = (args.length > 1 && !args[1].isEmpty()) ? args[1] : null;
+        System.out.println("start - " + (testTarget != null ? testTarget : "none args"));
+
         SpyMemcachedManager manager = new SpyMemcachedManager();
-        if(args.length > 0 && args[0].equals("ali")) {
+        if(testTarget.equals("ali")) {
             manager.testAli(args.length > 1 ? args[1] : null);
         }else{
-            manager.testQcloud();
+            manager.testQcloud(testMethod);
         }
     }
 
-    public void testQcloud(){
+    public void testQcloud(String type){
         log("info", "start test qcloud");
         final String host = "10.66.108.24";
         final String port = "9101";
@@ -48,9 +51,15 @@ public class SpyMemcachedManager {
             future.get(); //  确保之前(mc.set())操作已经结束
             log("info", "future get finished");
 
-            testNormal(cache, 20);
-            testAsync(cache, 50);
-            testAsyncGet(cache, 50);
+            if(type.equals("whileSet")){
+                whileSet(cache);
+            }else if(type.equals("whileGet")){
+                whileGet(cache);
+            }else {
+                testNormal(cache, 20);
+                testAsync(cache, 50);
+                testAsyncGet(cache, 50);
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -84,7 +93,7 @@ public class SpyMemcachedManager {
         log("info", "----------------------------------------------------------");
         for(int i = 0; i < count; i++) {
             String key = "spymemcache-normal-key-" + i;
-            log("get操作", key +"=" + cache.get(key));
+            log("get操作", key + "=" + cache.get(key));
         }
     }
 
@@ -106,7 +115,7 @@ public class SpyMemcachedManager {
         log("info", "----------------------------------------------------------");
         for(int i = 0; i < count; i++){
             String key = "spymemcache-async-key-same";
-            log("get操作", key +"=" + cache.get(key));
+            log("get操作", key + "=" + cache.get(key));
         }
     }
 
@@ -132,13 +141,43 @@ public class SpyMemcachedManager {
                 String key = "spymemcache-asyncGet-key-" + i;
                 Future f = cache.asyncGet(key);
                 try {
-                    log("get操作",key + "=" + f.get(3, TimeUnit.SECONDS));
+                    log("get操作", key + "=" + f.get(3, TimeUnit.SECONDS));
                 }catch (Exception e){
                     e.printStackTrace();
                 }
             }
+
     }
 
+    /**
+     * 循环写一个key
+     * @param tag
+     * @param msg
+     */
+    public void whileSet(MemcachedClient cache){
+        log("info", "-----------------start test while set----------------");
+        while(true){
+            String key = "spymemcache-whileSet-key";
+            String value = "spymemcache-whileSet-value-" + new Date().getTime();
+            cache.set(key, 1000, value);
+            log("while setted", key + "=" + value);
+        }
+    }
+
+    /**
+     * 循环读一个key
+     * @param tag
+     * @param msg
+     */
+
+    public void whileGet(MemcachedClient cache){
+        log("info", "-----------------start test while get----------------");
+        while(true){
+            String key = "spymemcache-whileSet-key";
+            String value = cache.get(key).toString();
+            log("while getted", key + "=" + value);
+        }
+    }
     public void log(String tag, String msg){
         System.out.println("["+new Date().getTime()+"] " + "[" + tag + "] " + msg);
     }
