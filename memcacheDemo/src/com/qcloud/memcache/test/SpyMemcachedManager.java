@@ -81,6 +81,7 @@ public class SpyMemcachedManager {
             log("set操作", key + "=" + value);
         }
 
+        log("info", "----------------------------------------------------------");
         for(int i = 0; i < count; i++) {
             String key = "spymemcache-normal-key-" + i;
             log("get操作", key +"=" + cache.get(key));
@@ -102,8 +103,9 @@ public class SpyMemcachedManager {
             log("set操作", key + "=" + value);
         }
 
+        log("info", "----------------------------------------------------------");
         for(int i = 0; i < count; i++){
-            String key = "spymemcache-async-key-" + i;
+            String key = "spymemcache-async-key-same";
             log("get操作", key +"=" + cache.get(key));
         }
     }
@@ -125,6 +127,7 @@ public class SpyMemcachedManager {
             cache.set(key, 1000, value);
             log("set操作", key + "=" + value);
         }
+        log("info", "----------------------------------------------------------");
             for (int i = 0; i < count; i++) {
                 String key = "spymemcache-asyncGet-key-" + i;
                 Future f = cache.asyncGet(key);
