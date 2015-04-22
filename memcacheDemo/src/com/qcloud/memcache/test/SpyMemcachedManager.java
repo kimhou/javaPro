@@ -28,7 +28,7 @@ public class SpyMemcachedManager {
     }
 
     public void testQcloud(){
-        System.out.println("start test qcloud");
+        System.out.println("start test qcloud, time:"+ new Date().getTime());
         final String host = "10.66.108.24";
         final String port = "9101";
 
@@ -36,6 +36,8 @@ public class SpyMemcachedManager {
         try {
 
             cache = new MemcachedClient(new BinaryConnectionFactory(), AddrUtil.getAddresses(host + ":" + port));
+
+            System.out.println("connected, time:"+ new Date().getTime());
 
             System.out.println("OCS Sample Code");
 
@@ -51,8 +53,8 @@ public class SpyMemcachedManager {
             future.get(); //  确保之前(mc.set())操作已经结束
 
             testNormal(cache, 10);
-            //testAsync(cache, 20);
-            //testAsyncGet(cache, 20);
+            testAsync(cache, 20);
+            testAsyncGet(cache, 20);
 
         } catch (IOException e) {
             e.printStackTrace();
