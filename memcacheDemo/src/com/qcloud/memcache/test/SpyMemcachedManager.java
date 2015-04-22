@@ -85,7 +85,7 @@ public class SpyMemcachedManager {
 
         for(int i = 0; i < count; i++) {
             String key = "spymemcache-normal-key-" + i;
-            System.out.println("Get操作:just set " + key +"=" + cache.get(key) + ", time:" + new Date());
+            System.out.println("Get操作:just set " + key +"=" + cache.get(key) + ", time:" + new Date().getTime());
         }
     }
 
@@ -106,7 +106,7 @@ public class SpyMemcachedManager {
 
         for(int i = 0; i < count; i++){
             String key = "spymemcache-async-key-" + i;
-            System.out.println("Get操作:just set " + key +"=" + cache.get(key) + ", time:" + new Date());
+            System.out.println("Get操作:just set " + key +"=" + cache.get(key) + ", time:" + new Date().getTime());
         }
     }
 
@@ -131,7 +131,7 @@ public class SpyMemcachedManager {
                 String key = "spymemcache-asyncGet-key-" + i;
                 Future f = cache.asyncGet(key);
                 try {
-                    System.out.println("asyncGet操作:just set " + key + "=" + cache.asyncGet(key) + ", time:" + new Date());
+                    System.out.println("asyncGet操作:just set " + key + "=" + cache.asyncGet(key) + ", time:" + new Date().getTime());
                 }catch (Exception e){
                     e.printStackTrace();
                 }
