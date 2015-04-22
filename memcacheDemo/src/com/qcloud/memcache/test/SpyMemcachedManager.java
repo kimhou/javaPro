@@ -53,8 +53,8 @@ public class SpyMemcachedManager {
             future.get(); //  确保之前(mc.set())操作已经结束
 
             testNormal(cache, 10);
-            testAsync(cache, 20);
-            testAsyncGet(cache, 20);
+            //testAsync(cache, 20);
+            //testAsyncGet(cache, 20);
 
         } catch (IOException e) {
             e.printStackTrace();
