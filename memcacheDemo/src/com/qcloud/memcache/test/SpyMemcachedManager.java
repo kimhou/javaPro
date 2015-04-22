@@ -74,7 +74,7 @@ public class SpyMemcachedManager {
     public void testNormal(MemcachedClient cache, int count){
         System.out.println("-----------------start test normal----------------");
         for (int i = 0; i < count; i++) {
-            Date t = new Date();
+            long t = new Date().getTime();
             String key = "spymemcache-normal-key-" + i;
             String value = "value-" + i + "-" + t;
 
@@ -97,7 +97,7 @@ public class SpyMemcachedManager {
     public void testAsync(MemcachedClient cache, int count){
         System.out.println("-----------------start test async set----------------");
         for(int i = 0; i < count; i++){
-            Date t = new Date();
+            long t = new Date().getTime();
             String key = "spymemcache-async-key-" + i;
             String value = "spymemcache-async-value-" + t;
             cache.set(key, 1000, value);
@@ -119,7 +119,7 @@ public class SpyMemcachedManager {
         System.out.println("-----------------start test async get----------------");
 
         for (int i = 0; i < count; i++) {
-            Date t = new Date();
+            long t = new Date().getTime();
             String key = "spymemcache-asyncGet-key-" + i;
             String value = "value-" + i + "-" + t;
 
