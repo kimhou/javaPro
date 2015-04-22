@@ -41,33 +41,21 @@ public class SpyMemcachedManager {
             //执行get操作，从缓存中读数据,读取key为"ocs"的数据
             System.out.println("Get操作:last key-1=" + cache.get("key-1"));
 
-
             //向OCS中存一个key为"ocs"的数据，便于后面验证读取数据
             OperationFuture future = cache.set("ocs", 1000, " Open Cache Service,  from www.qcloud.com");
 
-            //向OCS中存若干个数据，随后可以在OCS控制台监控上看到统计信息
-            for (int i = 0; i < 10; i++) {
-                String key = "key-" + i;
-                String value = "value-" + i + "-" + new Date();
+            //执行get操作，从缓存中读数据,读取key为"ocs"的数据
+            System.out.println("Get操作:" + cache.get("ocs"));
 
-                //执行set操作，向缓存中存数据
-                cache.set(key, 1000, value);
-            }
 
             System.out.println("Set操作完成!");
 
             future.get(); //  确保之前(mc.set())操作已经结束
 
-            //执行get操作，从缓存中读数据,读取key为"ocs"的数据
-            System.out.println("Get操作:" + cache.get("ocs"));
-            System.out.println("Get操作:just set key-1=" + cache.get("key-1"));
+            testNormal(cache, 10);
+            testAsync(cache, 20);
+            testAsyncGet(cache, 20);
 
-            Future f =  cache.asyncGet("key-2");
-            try {
-                System.out.println("Async Get操作:key-2=" + f.get(3, TimeUnit.SECONDS).toString());
-            }catch (Exception e){
-                e.printStackTrace();
-            }
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -78,6 +66,63 @@ public class SpyMemcachedManager {
         if (cache != null) {
             cache.shutdown();
         }
+    }
+
+    public void testNormal(MemcachedClient cache, int count){
+        System.out.println("-----------------start test normal----------------");
+        for (int i = 0; i < count; i++) {
+            Date t = new Date();
+            String key = "spymemcache-normal-key-" + i;
+            String value = "value-" + i + "-" + t;
+
+            //执行set操作，向缓存中存数据
+            cache.set(key, 1000, value);
+            System.out.println("setted " + key + "=" + value);
+        }
+
+        for(int i = 0; i < count; i++) {
+            String key = "spymemcache-normal-key-" + i;
+            System.out.println("Get操作:just set " + key +"=" + cache.get(key) + ", time:" + new Date());
+        }
+    }
+
+    public void testAsync(MemcachedClient cache, int count){
+        System.out.println("-----------------start test async set----------------");
+        for(int i = 0; i < count; i++){
+            Date t = new Date();
+            String key = "spymemcache-async-key-" + i;
+            String value = "spymemcache-async-value-" + t;
+            cache.set(key, 1000, value);
+            System.out.println("setted " + key + "=" + value);
+        }
+
+        for(int i = 0; i < count; i++){
+            String key = "spymemcache-async-key-" + i;
+            System.out.println("Get操作:just set " + key +"=" + cache.get(key) + ", time:" + new Date());
+        }
+    }
+
+    public void testAsyncGet(MemcachedClient cache, int count){
+        System.out.println("-----------------start test async get----------------");
+
+        for (int i = 0; i < count; i++) {
+            Date t = new Date();
+            String key = "spymemcache-asyncGet-key-" + i;
+            String value = "value-" + i + "-" + t;
+
+            //执行set操作，向缓存中存数据
+            cache.set(key, 1000, value);
+            System.out.println("setted " + key + "=" + value);
+        }
+            for (int i = 0; i < count; i++) {
+                String key = "spymemcache-asyncGet-key-" + i;
+                Future f = cache.asyncGet(key);
+                try {
+                    System.out.println("asyncGet操作:just set " + key + "=" + cache.asyncGet(key) + ", time:" + new Date());
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
     }
 
     public void testAli(String pwd){
