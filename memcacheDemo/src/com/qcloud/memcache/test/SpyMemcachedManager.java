@@ -1,4 +1,5 @@
 package com.qcloud.memcache.test;
+import com.sun.jdi.InternalException;
 import net.spy.memcached.*;
 import net.spy.memcached.auth.AuthDescriptor;
 import net.spy.memcached.auth.PlainCallbackHandler;
@@ -146,7 +147,11 @@ public class SpyMemcachedManager {
                     e.printStackTrace();
                 }
             }
-
+         try{
+             Thread.sleep(3000);
+         }catch (InterruptedException e){
+             e.printStackTrace();
+         }
     }
 
     /**
