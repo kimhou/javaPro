@@ -21,17 +21,19 @@ public class SpyMemcachedManager {
         String testTarget = (args.length > 0 && !args[0].isEmpty()) ? args[0] : "";
         String testMethod = (args.length > 1 && !args[1].isEmpty()) ? args[1] : "";
         String testUrl = (args.length > 2 && !args[2].isEmpty()) ? args[2] : "";
+        int count = (args.length > 3 && !args[3].isEmpty()) ? Integer.parseInt(args[3].toString()) : 10;
+
         System.out.println("start - " + (testTarget != null ? testTarget : "none args"));
 
         SpyMemcachedManager manager = new SpyMemcachedManager();
         if(testTarget.equals("ali")) {
             manager.testAli(args.length > 1 ? args[1] : null);
         }else{
-            manager.testQcloud(testMethod, testUrl);
+            manager.testQcloud(testMethod, testUrl, count);
         }
     }
 
-    public void testQcloud(String type, String url){
+    public void testQcloud(String type, String url, int count){
         log("info", "start test qcloud");
         final String host = "10.66.108.24";
         final String port = "9101";
@@ -58,11 +60,11 @@ public class SpyMemcachedManager {
             }else if(type.equals("whileGet")){
                 whileGet(cache);
             }else if(type.equals("normal")){
-                testNormal(cache, 20);
+                testNormal(cache, count);
             }else if(type.equals("concurrency")){
-                testConcurrency(cache, 50);
+                testConcurrency(cache, count);
             }else if(type.equals("asyncGet")){
-                testAsyncGet(cache, 50);
+                testAsyncGet(cache, count);
             }
 
 
@@ -147,10 +149,10 @@ public class SpyMemcachedManager {
                 String key = "spymemcache-asyncGet-key-" + i;
                 Future f = cache.asyncGet(key);
                 futrues[i] = f;
-                log("futrue get操作", key + i + " asyncGet");
+                log("future asyncGet操作", key);
             }
         try {
-            log("asyncGet实际操作", "spymemcache-asyncGet-key-" + (count - 1) + "=" + futrues[count - 1].get(3, TimeUnit.SECONDS));
+            log("future.get()实际操作", "spymemcache-asyncGet-key-" + (count - 1) + "=" + futrues[count - 1].get(3, TimeUnit.SECONDS));
         }catch (Exception e){
             e.printStackTrace();
         }
