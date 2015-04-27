@@ -22,6 +22,7 @@ public class SpyMemcachedManager {
         String testMethod = (args.length > 1 && !args[1].isEmpty()) ? args[1] : "";
         String testUrl = (args.length > 2 && !args[2].isEmpty()) ? args[2] : "";
         int count = (args.length > 3 && !args[3].isEmpty()) ? Integer.parseInt(args[3].toString()) : 10;
+        String connectionType = (args.length > 4 && !args[4].isEmpty()) ? args[4] : "";
 
         System.out.println("start - " + (testTarget != null ? testTarget : "none args"));
 
@@ -29,11 +30,11 @@ public class SpyMemcachedManager {
         if(testTarget.equals("ali")) {
             manager.testAli(args.length > 1 ? args[1] : null);
         }else{
-            manager.testQcloud(testMethod, testUrl, count);
+            manager.testQcloud(testMethod, testUrl, count, connectionType);
         }
     }
 
-    public void testQcloud(String type, String url, int count){
+    public void testQcloud(String type, String url, int count, String connectionType){
         log("info", "start test qcloud");
         final String host = "10.66.108.24";
         final String port = "9101";
@@ -41,8 +42,14 @@ public class SpyMemcachedManager {
 
         MemcachedClient cache = null;
         try {
+            DefaultConnectionFactory f;
+            if(connectionType.equals("ascii")){
+                f = new DefaultConnectionFactory();
+            }else{
+                f = new BinaryConnectionFactory();
+            }
 
-            cache = new MemcachedClient(new BinaryConnectionFactory(), AddrUtil.getAddresses(url));//new DefaultConnectionFactory()
+            cache = new MemcachedClient(f, AddrUtil.getAddresses(url));
 
             log("info", "connected");
 

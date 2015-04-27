@@ -26,8 +26,8 @@
       <file leaf-file-name="SpyMemcachedManager.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/qcloud/memcache/test/SpyMemcachedManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7703281" vertical-offset="2250" max-vertical-offset="4626">
-              <caret line="155" column="51" selection-start-line="155" selection-start-column="51" selection-end-line="155" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.7446505" vertical-offset="396" max-vertical-offset="4752">
+              <caret line="51" column="70" selection-start-line="51" selection-start-column="70" selection-end-line="51" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -35,12 +35,35 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="BinaryConnectionFactory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/spy/memcached/BinaryConnectionFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="954">
+              <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MemcachedClient.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/spy/memcached/MemcachedClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3092" max-vertical-offset="33948">
-              <caret line="173" column="9" selection-start-line="173" selection-start-column="9" selection-end-line="173" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1778" max-vertical-offset="33948">
+              <caret line="163" column="22" selection-start-line="163" selection-start-column="22" selection-end-line="163" selection-end-column="22" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefaultConnectionFactory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/spy/memcached/DefaultConnectionFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3344" max-vertical-offset="5184">
+              <caret line="262" column="26" selection-start-line="262" selection-start-column="26" selection-end-line="262" selection-end-column="26" />
+              <folding>
+                <element signature="e#8067#8068#0" expanded="true" />
+                <element signature="e#8111#8112#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -411,12 +434,12 @@
       <workItem from="1429175945714" duration="7178000" />
       <workItem from="1429244521082" duration="216000" />
       <workItem from="1429251760035" duration="11550000" />
-      <workItem from="1429667267291" duration="16452000" />
+      <workItem from="1429667267291" duration="17127000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35396000" />
+    <option name="totallyTimeSpent" value="36071000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1053" extended-state="6" />
@@ -510,6 +533,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4223706" vertical-offset="467" max-vertical-offset="3006">
           <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -549,18 +576,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/spy/memcached/DefaultConnectionFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3344" max-vertical-offset="5184">
+          <caret line="262" column="26" selection-start-line="262" selection-start-column="26" selection-end-line="262" selection-end-column="26" />
+          <folding>
+            <element signature="e#8067#8068#0" expanded="true" />
+            <element signature="e#8111#8112#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/spy/memcached/MemcachedClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="936" max-vertical-offset="33948">
-          <caret line="173" column="9" selection-start-line="173" selection-start-column="9" selection-end-line="173" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1508" max-vertical-offset="33948">
+          <caret line="163" column="22" selection-start-line="163" selection-start-column="22" selection-end-line="163" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/spy/memcached/BinaryConnectionFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="954">
+          <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/qcloud/memcache/test/SpyMemcachedManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7703281" vertical-offset="2250" max-vertical-offset="4626">
-          <caret line="155" column="51" selection-start-line="155" selection-start-column="51" selection-end-line="155" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.7446505" vertical-offset="396" max-vertical-offset="4752">
+          <caret line="51" column="70" selection-start-line="51" selection-start-column="70" selection-end-line="51" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
