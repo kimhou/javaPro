@@ -1,12 +1,10 @@
 package com.qcloud.memcache.test;
-import com.sun.jdi.InternalException;
 import net.spy.memcached.*;
 import net.spy.memcached.auth.AuthDescriptor;
 import net.spy.memcached.auth.PlainCallbackHandler;
 import net.spy.memcached.internal.OperationFuture;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.InetSocketAddress;
 import java.util.Date;
 import java.util.List;
@@ -59,11 +57,14 @@ public class SpyMemcachedManager {
                 whileSet(cache);
             }else if(type.equals("whileGet")){
                 whileGet(cache);
-            }else {
+            }else if(type.equals("normal")){
                 testNormal(cache, 20);
-                testAsync(cache, 50);
+            }else if(type.equals("concurrency")){
+                testConcurrency(cache, 50);
+            }else if(type.equals("asyncGet")){
                 testAsyncGet(cache, 50);
             }
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -106,7 +107,7 @@ public class SpyMemcachedManager {
      * @param cache
      * @param count
      */
-    public void testAsync(MemcachedClient cache, int count){
+    public void testConcurrency(MemcachedClient cache, int count){
         log("info", "-----------------start test async set----------------");
         for(int i = 0; i < count; i++){
             long t = new Date().getTime();
