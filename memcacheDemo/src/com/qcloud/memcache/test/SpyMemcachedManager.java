@@ -145,14 +145,15 @@ public class SpyMemcachedManager {
         }
         log("info", "----------------------------------------------------------");
         Future[] futrues = new Future[count];
+        String[] keys = new String[count];
             for (int i = 0; i < count; i++) {
-                String key = "spymemcache-asyncGet-key-" + i;
-                Future f = cache.asyncGet(key);
+                keys[i] = "spymemcache-asyncGet-key-" + i;
+                Future f = cache.asyncGet(keys[i]);
                 futrues[i] = f;
-                log("future asyncGet操作", key);
+                log("future asyncGet操作", keys[i]);
             }
         try {
-            log("future.get()实际操作", "spymemcache-asyncGet-key-" + (count - 1) + "=" + futrues[count - 1].get(3, TimeUnit.SECONDS));
+            log("future.get()实际操作", keys[count - 1] + "=" + futrues[count - 1].get(3, TimeUnit.SECONDS));
         }catch (Exception e){
             e.printStackTrace();
         }
