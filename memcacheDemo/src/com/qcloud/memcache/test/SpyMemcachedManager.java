@@ -40,7 +40,7 @@ public class SpyMemcachedManager {
         MemcachedClient cache = null;
         try {
 
-            cache = new MemcachedClient(new DefaultConnectionFactory(), AddrUtil.getAddresses(url));
+            cache = new MemcachedClient(new BinaryConnectionFactory(), AddrUtil.getAddresses(url));//new DefaultConnectionFactory()
 
             log("info", "connected");
 
