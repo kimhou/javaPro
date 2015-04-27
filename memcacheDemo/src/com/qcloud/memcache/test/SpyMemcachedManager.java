@@ -117,18 +117,18 @@ public class SpyMemcachedManager {
      * @param count
      */
     public void testConcurrency(MemcachedClient cache, int count){
-        log("info", "-----------------start test async set----------------");
+        log("info", "-----------------start test concurrency ----------------");
         for(int i = 0; i < count; i++){
             long t = new Date().getTime();
-            String key = "spymemcache-async-key-same";
-            String value = "spymemcache-async-value-" + t;
+            String key = "spymemcache-concurrency-key-same";
+            String value = "spymemcache-concurrency-value-" + t;
             cache.set(key, 1000, value);
             log("set操作", key + "=" + value);
         }
 
         log("info", "----------------------------------------------------------");
         for(int i = 0; i < count; i++){
-            String key = "spymemcache-async-key-same";
+            String key = "spymemcache-concurrency-key-same";
             log("get操作", key + "=" + cache.get(key));
         }
     }
