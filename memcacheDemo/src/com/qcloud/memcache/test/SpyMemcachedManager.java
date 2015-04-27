@@ -6,6 +6,7 @@ import net.spy.memcached.auth.PlainCallbackHandler;
 import net.spy.memcached.internal.OperationFuture;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.InetSocketAddress;
 import java.util.Date;
 import java.util.List;
@@ -19,27 +20,29 @@ import java.util.concurrent.TimeUnit;
 public class SpyMemcachedManager {
 
     public static void main(String[] args){
-        String testTarget = (args.length > 0 && !args[0].isEmpty()) ? args[0] : null;
-        String testMethod = (args.length > 1 && !args[1].isEmpty()) ? args[1] : null;
+        String testTarget = (args.length > 0 && !args[0].isEmpty()) ? args[0] : "";
+        String testMethod = (args.length > 1 && !args[1].isEmpty()) ? args[1] : "";
+        String testUrl = (args.length > 2 && !args[2].isEmpty()) ? args[2] : "";
         System.out.println("start - " + (testTarget != null ? testTarget : "none args"));
 
         SpyMemcachedManager manager = new SpyMemcachedManager();
         if(testTarget.equals("ali")) {
             manager.testAli(args.length > 1 ? args[1] : null);
         }else{
-            manager.testQcloud(testMethod);
+            manager.testQcloud(testMethod, testUrl);
         }
     }
 
-    public void testQcloud(String type){
+    public void testQcloud(String type, String url){
         log("info", "start test qcloud");
         final String host = "10.66.108.24";
         final String port = "9101";
+        url = url.length() > 0 ? url : host + ":" + port;
 
         MemcachedClient cache = null;
         try {
 
-            cache = new MemcachedClient(new DefaultConnectionFactory(), AddrUtil.getAddresses(host + ":" + port));
+            cache = new MemcachedClient(new DefaultConnectionFactory(), AddrUtil.getAddresses(url));
 
             log("info", "connected");
 
@@ -138,15 +141,18 @@ public class SpyMemcachedManager {
             log("set操作", key + "=" + value);
         }
         log("info", "----------------------------------------------------------");
+        Future[] futrues = new Future[count];
             for (int i = 0; i < count; i++) {
                 String key = "spymemcache-asyncGet-key-" + i;
                 Future f = cache.asyncGet(key);
-                try {
-                    log("get操作", key + "=" + f.get(3, TimeUnit.SECONDS));
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
+                futrues[i] = f;
+                log("futrue get操作", key + i + " asyncGet");
             }
+        try {
+            log("asyncGet实际操作", "spymemcache-asyncGet-key-" + (count - 1) + "=" + futrues[count - 1].get(3, TimeUnit.SECONDS));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
          try{
              Thread.sleep(3000);
          }catch (InterruptedException e){
