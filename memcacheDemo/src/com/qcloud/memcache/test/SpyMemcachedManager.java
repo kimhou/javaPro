@@ -18,10 +18,10 @@ import java.util.concurrent.TimeUnit;
 public class SpyMemcachedManager {
 
     public static void main(String[] args){
-        String testMethod = (args.length > 1 && !args[1].isEmpty()) ? args[1] : "";
-        String testUrl = (args.length > 2 && !args[2].isEmpty()) ? args[2] : "";
-        int count = (args.length > 3 && !args[3].isEmpty()) ? Integer.parseInt(args[3].toString()) : 10;
-        String connectionType = (args.length > 4 && !args[4].isEmpty()) ? args[4] : "";
+        String testMethod = (args.length > 1 && !args[0].isEmpty()) ? args[0] : "";
+        String testUrl = (args.length > 1 && !args[1].isEmpty()) ? args[1] : "";
+        int count = (args.length > 2 && !args[2].isEmpty()) ? Integer.parseInt(args[2].toString()) : 10;
+        String connectionType = (args.length > 3 && !args[3].isEmpty()) ? args[3] : "";
 
         System.out.println("start test - method = " + testMethod + ", testUrl = " + testUrl + ", testCount = " + count);
 
