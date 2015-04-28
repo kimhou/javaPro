@@ -171,8 +171,8 @@ public class SpyMemcachedManager {
         log("info", "-----------------start test while set----------------");
         int i = 0;
         while(i++ < count){
-            String key = "spymemcache-whileSet-key";
-            String value = "spymemcache-whileSet-value-" + new Date().getTime();
+            String key = "key-" + i;
+            String value = "value-" + i + "-" + new Date().getTime();
             cache.set(key, 1000, value);
             log("while setted", key + "=" + value);
         }
@@ -185,7 +185,7 @@ public class SpyMemcachedManager {
         log("info", "-----------------start test while get----------------");
         int i = 0;
         while(i++ < count){
-            String key = "spymemcache-whileSet-key";
+            String key = "key-" + i;
             String value = cache.get(key).toString();
             log("while getted", key + "=" + value);
         }
