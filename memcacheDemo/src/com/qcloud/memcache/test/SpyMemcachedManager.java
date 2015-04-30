@@ -1,14 +1,8 @@
 package com.qcloud.memcache.test;
 import net.spy.memcached.*;
-import net.spy.memcached.auth.AuthDescriptor;
-import net.spy.memcached.auth.PlainCallbackHandler;
-import net.spy.memcached.internal.OperationFuture;
 
 import java.io.IOException;
-import java.net.InetSocketAddress;
 import java.util.Date;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
