@@ -21,13 +21,22 @@ public class SpyMemcachedManager {
 
         if(testUrl.length() >= 0) {
             SpyMemcachedManager manager = new SpyMemcachedManager();
-            manager.testQcloud(testMethod, testUrl, count, connectionType);
+            manager.testQcloud(args);
         }else{
             System.out.println("缺少url");
         }
     }
 
-    public void testQcloud(String type, String url, int count, String connectionType){
+    public void testQcloud(String[] args){
+        String type = (args.length > 1 && !args[0].isEmpty()) ? args[0] : "";
+        String url = (args.length > 1 && !args[1].isEmpty()) ? args[1] : "";
+        int count = (args.length > 2 && !args[2].isEmpty()) ? Integer.parseInt(args[2].toString()) : 10;
+        String connectionType = (args.length > 3 && !args[3].isEmpty()) ? args[3] : "";
+        String getKeyStr = "";
+        if(type.equals("getKey")){
+            getKeyStr = (args.length > 2 && !args[2].isEmpty()) ? args[2] : "";
+        }
+
         log("info", "start test qcloud");
         MemcachedClient cache = null;
         try {
@@ -52,6 +61,10 @@ public class SpyMemcachedManager {
                 testConcurrency(cache, count);
             }else if(type.equals("asyncGet")){
                 testAsyncGet(cache, count);
+            }else if(type.equals("getKey")){
+                getKey(cache, getKeyStr);
+            }else if(type.equals("onlySet")){
+                onlySet(cache, count);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -65,13 +78,18 @@ public class SpyMemcachedManager {
         log("info", "-----------------start test only set----------------");
         for (int i = 0; i < count; i++) {
             long t = new Date().getTime();
-            String key = "spymemcache-only-set-key-" + i;
-            String value = "spymemcache-only-set-vlaue-" + i + "-" + t;
+            String key = "key-spy-" + i;
+            String value = "vlaue-spy-" + i + "-" + t;
 
             //执行set操作，向缓存中存数据
             cache.set(key, 1000, value);
             log("set操作", key + "=" + value);
         }
+    }
+
+    public void getKey(MemcachedClient cache, String key){
+        log("info", "-----------------start test get key----------------");
+        log("get key", key + " = " + cache.get(key));
     }
 
     /**
