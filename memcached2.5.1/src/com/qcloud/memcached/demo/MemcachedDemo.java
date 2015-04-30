@@ -17,7 +17,7 @@ public class MemcachedDemo {
 
         //管理中心，点击“NoSQL高速存储”，在NoSQL高速存储“管理视图”，可以看到系统分配的IP:Port
         //需要在内网IP上访问, 不需要账号密码
-        final String ip = "10.66.115.111";
+        final String ip = "10.66.100.169";
         final String port = "9101";
 
         System.out.println("start test qcloud cmem - " + ip + ":" + port);
