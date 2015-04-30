@@ -14,10 +14,7 @@ public class SpyMemcachedManager {
     public static void main(String[] args){
         String testMethod = (args.length > 1 && !args[0].isEmpty()) ? args[0] : "";
         String testUrl = (args.length > 1 && !args[1].isEmpty()) ? args[1] : "";
-        int count = (args.length > 2 && !args[2].isEmpty()) ? Integer.parseInt(args[2].toString()) : 10;
-        String connectionType = (args.length > 3 && !args[3].isEmpty()) ? args[3] : "";
 
-        System.out.println("start test - method = " + testMethod + ", testUrl = " + testUrl + ", testCount = " + count);
 
         if(testUrl.length() >= 0) {
             SpyMemcachedManager manager = new SpyMemcachedManager();
@@ -30,14 +27,20 @@ public class SpyMemcachedManager {
     public void testQcloud(String[] args){
         String type = (args.length > 1 && !args[0].isEmpty()) ? args[0] : "";
         String url = (args.length > 1 && !args[1].isEmpty()) ? args[1] : "";
-        int count = (args.length > 2 && !args[2].isEmpty()) ? Integer.parseInt(args[2].toString()) : 10;
-        String connectionType = (args.length > 3 && !args[3].isEmpty()) ? args[3] : "";
+
+        int count = 0;
+        String connectionType = "";
         String getKeyStr = "";
+
         if(type.equals("getKey")){
             getKeyStr = (args.length > 2 && !args[2].isEmpty()) ? args[2] : "";
+        }else{
+            count = (args.length > 2 && !args[2].isEmpty()) ? Integer.parseInt(args[2].toString()) : 10;
+            connectionType = (args.length > 3 && !args[3].isEmpty()) ? args[3] : "";
         }
 
-        log("info", "start test qcloud");
+        System.out.println("start test - method = " + type + ", testUrl = " + url + ", testCount = " + count);
+
         MemcachedClient cache = null;
         try {
             DefaultConnectionFactory f;
